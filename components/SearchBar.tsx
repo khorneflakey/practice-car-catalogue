@@ -3,7 +3,7 @@
 import Image from "next/image";
 import SearchManufacturer from "./SearchManufacturer";
 
-import { use, useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from "next/navigation";
 
 const SearchButton = ({ otherClasses }: {otherClasses: string}) => (
@@ -27,7 +27,7 @@ const SearchBar = () => {
  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (manufacturer === '' && model === '') {
+    if (manufacturer === '' && model.trim() === '') {
         return alert('Please fill in the search bar')
     }
 
@@ -78,7 +78,7 @@ const SearchBar = () => {
                 name="model"
                 value={model}
                 onChange={(e) => setModel(e.target.value)}
-                placeholder="Tiguan"
+                placeholder="Tiguan..."
                 className="searchbar__input"
             />
             <SearchButton otherClasses="sm:hidden"/>
